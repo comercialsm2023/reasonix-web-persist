@@ -1,0 +1,16 @@
+[Unit]
+Description=Reasonix Web Settings Persist Proxy
+After=network.target reasonix-serve.service
+BindsTo=reasonix-serve.service
+
+[Service]
+Type=simple
+Environment=UPSTREAM=http://127.0.0.1:8799
+Environment=LISTEN=127.0.0.1:8787
+Environment=CONFIG_PATH=/root/.reasonix/config.toml
+ExecStart=/root/reasonix-web-persist/reasonix-web-persist
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

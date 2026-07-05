@@ -1,0 +1,13 @@
+[Unit]
+Description=Reasonix AI Agent (port 8799, proxied)
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/root/.reasonix/.env
+ExecStart=/usr/lib/node_modules/reasonix/node_modules/@reasonix/cli-linux-x64/bin/reasonix serve -addr 127.0.0.1:8799
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
